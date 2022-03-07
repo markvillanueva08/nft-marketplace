@@ -11,10 +11,10 @@ module.exports = {
       url: "https://rpc-mumbai.matic.today",
       accounts: [privateKey]
     },
-    mainet: {
-      url: "https://rpc-mainnet.matic.network",
-      accounts: [privateKey]
-    },
+  //  mainet: {
+ //     url: "https://rpc-mainnet.matic.network",
+   //   accounts: [privateKey]
+  //  },
 
   },
 
