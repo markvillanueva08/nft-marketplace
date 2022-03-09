@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract NFTMarket is ReentrancyGuard {
     using Counters for Counters.counter;
     Count.Counter private _itemIds;
+    Count.Counter private _itemsSold;
     
     address payable owner;
     uint256 listingPrice = 0.025 ether;
@@ -15,6 +16,7 @@ contract NFTMarket is ReentrancyGuard {
     constructor(){
         owner = payable(msg.sender);
     }
+    
     struct MarketItem{
         uint itemId;
         address nftContract;
@@ -28,8 +30,15 @@ contract NFTMarket is ReentrancyGuard {
     mapping(unit256 => MarketItem) private idToMarketItem;
 
     event MarketItemCreated(
-
+        uint indexed itemId,
+        address indexed nftContract,
+        uint256 indexed tokenId,
+        address seller,
+        address owner,
+        uint256 price,
+        bool sold
     );
+
     function getListingPrice() public view returns (uint256){
         return listingPrice;
     }
